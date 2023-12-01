@@ -25,9 +25,7 @@ export class Scroll {
     }
 
     dibuja() {
-
-        if (!settings.estado.enJuego) return;
-
+        
         this.actualiza();
 
         const scrollUp = this.rect.y - this.rect.alto;

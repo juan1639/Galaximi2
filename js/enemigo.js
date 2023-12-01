@@ -4,6 +4,7 @@ import { settings } from "./main.js";
 export class Enemigo {
 
     static nro_tiposEnemigo = 3;
+    static suma_puntos = 50;
     static top_recorrido_haciaAbajo = 12;
     static resetFormacion = false;
 
@@ -69,15 +70,26 @@ export class Enemigo {
         this.anima = 0;
         this.nro_animas = 4;
 
+        if (settings.marcadores.puntos <= 0) {
+            this.pausa_newGame = true;
+        
+        } else {
+            this.pausa_newGame = false;
+        }
+
         setInterval(() => {
             this.anima ++;
             if (this.anima >= this.nro_animas) this.anima = 0;
         }, 99);
+
+        setTimeout(() => {
+            this.pausa_newGame = false;
+        }, 5900);
     }
 
     dibuja() {
 
-        if (!settings.estado.enJuego || settings.estado.nivelSuperado || !this.activo) return;
+        if (!settings.estado.enJuego || settings.estado.nivelSuperado || !this.activo || this.pausa_newGame) return;
 
         this.actualiza();
 

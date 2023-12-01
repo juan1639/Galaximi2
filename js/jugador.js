@@ -1,6 +1,7 @@
 import { settings } from "./main.js";
 import { ExploEnemigo, ExploParticulas } from "./explo-enemigo.js";
 import { Enemigo } from "./enemigo.js";
+import { Vidas } from "./vidas.js";
 
 import { 
     checkColision,
@@ -176,9 +177,18 @@ export class Jugador {
 
         if (settings.marcadores.vidas < 0) {
 
+            settings.estado.gameOver = true;
+            settings.estado.enJuego = false;
+            return;
         }
 
         console.log(settings.marcadores.vidas);
+
+        settings.objeto.showvidas = [];
+
+        for (let i = 0; i < settings.marcadores.vidas; i ++) {
+            settings.objeto.showvidas.push(new Vidas(settings.argumentos.showvidas, i));
+        }
 
         Enemigo.resetFormacion = true;
         this.revivir.invisible = true;

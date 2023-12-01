@@ -16,6 +16,8 @@ export class Settings {
             nro_enemigos_inicial: 8,
             pausaNivelSuperado: 3400,
             pausaMsgNivelMostrar: 5200,
+            duracion_sonido_intro_galaxian: 6500,
+            nro_botonesControl: 3,
             ssheet: './img/ssheet_galaxian.png'
         };
 
@@ -41,7 +43,8 @@ export class Settings {
             exploenemigo: [],
             exploparticulas: [],
             texto: [],
-            showvidas: []
+            showvidas: [],
+            botones: []
         };
 
         this.argumentos = {
@@ -88,8 +91,9 @@ export class Settings {
         };
 
         this.estado = {
-            preJuego: false,
-            enJuego: true,
+            preJuego: true,
+            playerStart: false,
+            enJuego: false,
             jugadorDies: false,
             gameOver: false,
             reJugar: false,
@@ -121,6 +125,10 @@ export class Settings {
             explosion: new Audio('./audio/explosion.wav'),
             naveExplota: new Audio('./audio/navexplota.mp3'),
             phaser: new Audio('./audio/phaser.ogg'),
+            disparoCorto: new Audio('./audio/disparo_corto.mp3'),
+            retroGameIntro: new Audio('./audio/retro-game-intro.mp3'),
+            introGalaxian: new Audio('./audio/playing-galaxian.mp3'),
+            levelPassed: new Audio('./audio/level-passed.mp3'),
         };
 
         this.volumen = {
@@ -135,6 +143,10 @@ export class Settings {
             explosion: 0.9,
             naveExplota: 0.9,
             phaser: 0.9,
+            disparoCorto: 0.9,
+            retroGameIntro: 0.9,
+            introGalaxian: 0.9,
+            levelPassed: 0.8
         }
     }
 }

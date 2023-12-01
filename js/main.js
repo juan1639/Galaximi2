@@ -9,6 +9,7 @@ import { Disparo } from './disparo.js';
 import { Enemigo } from './enemigo.js';
 import { Textos } from './textos.js';
 import { Vidas } from './vidas.js';
+import { Botones } from './botones.js';
 
 // ----------------------------------------------------------------------------
 import {
@@ -69,10 +70,9 @@ function comenzar_instancias() {
         settings.objeto.showvidas.push(new Vidas(settings.argumentos.showvidas, i));
     }
 
-    setTimeout(() => {
-        console.log(settings.objeto.enemigo);
-        console.log(settings.objeto.disparo);
-    }, 20000);
+    for (let i = 0; i < settings.constante.nro_botonesControl; i ++) {
+        settings.objeto.botones.push(new Botones(i));
+    }
 
     // ---------------------------------------------------------------
     setInterval(() => {
@@ -92,7 +92,7 @@ function bucle_principal() {
         if (objeto === 'jugador' || objeto === 'scroll') {
             settings.objeto[objeto].dibuja();
 
-        } else if (objeto === 'enemigo' || objeto === 'disparo' || objeto === 'exploenemigo' || objeto === 'exploparticulas' || objeto === 'texto' || objeto === 'showvidas') {
+        } else if (objeto === 'enemigo' || objeto === 'disparo' || objeto === 'exploenemigo' || objeto === 'exploparticulas' || objeto === 'texto' || objeto === 'showvidas' || objeto === 'botones') {
             for (let noArg of settings.objeto[objeto]) {
                 noArg.dibuja();
             }

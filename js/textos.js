@@ -18,7 +18,10 @@ export class Textos {
         ['GalaxIMI', 'center', 28, this.colores.azul_claro],
         ['Game Over', 'center', 24, this.colores.orangered],
         ['Enhorabuena!', 'center', 18, this.colores.txt_amar3],
-        ['Ptos: ', 'left', 12, this.colores.txt_amar2],
+        ['Toque Pantalla o pulse Enter', 'center', 10, 'white'],
+        ['para comenzar...', 'center', 10, 'white'],
+        ['Player Start!', 'center', 14, this.colores.orangered],
+        ['Pts: ', 'left', 12, this.colores.txt_amar2],
         ['Hi: ', 'center', 12, this.colores.txt_amar2]
     ];
 
@@ -38,13 +41,24 @@ export class Textos {
 
         let x = Math.floor(settings.canvas.width / settings.escala.x / 2);
         let y = Math.floor(settings.canvas.height / settings.escala.y / 2);
+
+        let marcadorTxt = '';
         
-        if (this.idTxt.slice(0, 3) === 'Pto') {
+        if (this.idTxt.slice(0, 3) === 'Pts') {
             x = 0;
             y = this.size;
+            marcadorTxt = settings.marcadores.puntos.toString();
 
         } else if (this.idTxt.slice(0, 2) === 'Hi') {
+            x = Math.floor(settings.canvas.width / settings.escala.x / 1.7);
             y = this.size;
+            marcadorTxt = settings.marcadores.puntos.toString();
+
+        } else if (this.idTxt.slice(0, 5) === 'Toque') {
+            y = Math.floor(settings.canvas.height / settings.escala.y / 1.6);
+
+        } else if (this.idTxt.slice(0, 4) === 'para') {
+            y = Math.floor(settings.canvas.height / settings.escala.y / 1.4);
         }
 
         this.ctx.save();
@@ -54,7 +68,10 @@ export class Textos {
         this.ctx.fillStyle = 'transparent';
         this.ctx.fillStyle = this.renderizado_condicional();
 
-        this.ctx.fillText(this.idTxt, x, y);
+        this.ctx.shadowColor = 'white';
+        this.ctx.shadowBlur = 8;
+
+        this.ctx.fillText(this.idTxt + marcadorTxt, x, y);
 
         this.ctx.restore();
     }
@@ -62,8 +79,10 @@ export class Textos {
     renderizado_condicional() {
 
         if (this.size === 12) return this.color;
+        if (this.size === 14 && settings.estado.playerStart) return this.color;
+        if (this.size === 10 && settings.estado.preJuego) return this.color;
         if (this.idTxt.slice(0, 5) === 'Galax' && settings.estado.preJuego) return this.color;
-        if (this.idTxt.slice(0, 5) === 'Enhor' && settings.estado.nivelSuperado) return this.color;
+        // if (this.idTxt.slice(0, 5) === 'Enhor' && settings.estado.nivelSuperado) return this.color;
         if (this.idTxt.slice(0, 4) === 'Game' && settings.estado.gameOver) return this.color;
 
         return 'transparent';

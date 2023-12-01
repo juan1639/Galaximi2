@@ -38,7 +38,9 @@ function reset_formacion() {
         Enemigo.resetFormacion = false;
         settings.marcadores.nivel ++;
         settings.objeto.enemigo = [];
-        playSonidosLoop(settings.sonidos.eatingGhost, false, settings.volumen.eatingGhost);
+
+        // playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
+        playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
 
         const nuevo_nro_enemigos = settings.constante.nro_enemigos_inicial + settings.marcadores.nivel;
         let xIni = -50;
@@ -59,6 +61,21 @@ function reset_formacion() {
             settings.estado.nivelSuperado = false;
         }, settings.constante.pausaNivelSuperado);
     }
+}
+
+// ============================================================================
+function comenzar_partida() {
+
+    settings.estado.preJuego = false;
+    settings.estado.enJuego = true;
+    settings.estado.playerStart = true;
+
+    playSonidosLoop(settings.sonidos.introGalaxian, false, settings.volumen.introGalaxian);
+
+    setTimeout(() => {
+        settings.sonidos.introGalaxian.pause();
+        settings.estado.playerStart = false;
+    }, settings.constante.duracion_sonido_intro_galaxian);
 }
 
 // ============================================================================
@@ -91,6 +108,7 @@ export {
     inicializa_disparo,
     reset_formacion,
     check_gameOver,
+    comenzar_partida,
     borraCanvas,
     playSonidosLoop
 };

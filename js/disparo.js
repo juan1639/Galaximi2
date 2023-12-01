@@ -1,4 +1,5 @@
 import { settings } from "./main.js";
+import { Enemigo } from "./enemigo.js";
 import { checkColision, playSonidosLoop } from "./functions.js";
 import { ExploEnemigo, ExploParticulas } from "./explo-enemigo.js";
 
@@ -70,6 +71,7 @@ export class Disparo {
 
                 ene.activo = false;
                 this.activo = false;
+                settings.marcadores.puntos += Enemigo.suma_puntos + (Math.floor(Math.random()* 5) * 10);
 
                 playSonidosLoop(settings.sonidos.explosion, false, settings.volumen.explosion);
 

@@ -1,4 +1,5 @@
 import { settings } from "./main.js";
+import { comenzar_partida } from "./functions.js";
 
 // ----------------------------------------------------------------------
 //  EVENTOS Keydown
@@ -15,6 +16,13 @@ const eventos_keyDown = document.addEventListener('keydown', (event) => {
         if (pulsacion === settings.tecla.tecla_enter[0] || pulsacion === settings.tecla.tecla_enter[1]) {
             
             location.reload();
+        }
+
+    } else if (settings.estado.preJuego) {
+
+        if (pulsacion === settings.tecla.tecla_enter[0] || pulsacion === settings.tecla.tecla_enter[1]) {
+
+            comenzar_partida();
         }
     
     } else if (settings.estado.enJuego) {
@@ -73,8 +81,15 @@ const eventos_touchStart = document.addEventListener('touchstart', (event) => {
 
     if (settings.estado.reJugar) {
 
-        if (touch === settings.tecla.touch_newGame[0] || touch === settings.tecla.touch_canvas[0]) {
+        if (touch === settings.tecla.touch_canvas[0]) {
             location.reload();
+        }
+    
+    } else if (settings.estado.preJuego) {
+
+        if (touch === settings.tecla.touch_canvas[0]) {
+
+            comenzar_partida();
         }
     }
 
@@ -121,10 +136,17 @@ const eventos_click = document.addEventListener('click', (event) => {
 
     if (settings.estado.reJugar) {
 
-        if (clickar === settings.tecla.touch_newGame[0] || clickar === settings.tecla.touch_canvas[0]) {
+        if (clickar === settings.tecla.touch_canvas[0]) {
+
             location.reload();
         }
         
+    } else if (settings.estado.preJuego) {
+
+        if (clickar === settings.tecla.touch_canvas[0]) {
+
+            comenzar_partida();
+        }
     }
 });
 
