@@ -27,8 +27,8 @@ export class Jugador {
         this.rect = {
             x: args[0],
             y: args[1],
-            ancho: Math.floor(settings.constante.bsx * 1.2),
-            alto: Math.floor(settings.constante.bsy * 1.2),
+            ancho: Math.floor(settings.constante.bsx),
+            alto: Math.floor(settings.constante.bsy),
             clipX: this.corr_suma,
             clipY: 68 + this.corr_suma,
             clipAncho: 16 - this.corr_resta * 2,
@@ -146,13 +146,11 @@ export class Jugador {
         if (settings.controles.tecla_iz || settings.controles.touch_iz) {
             
             dx = -(this.move.velX);
-            settings.controles.touch_iz = false;
             //console.log('iz');
             
         } else if (settings.controles.tecla_de || settings.controles.touch_de) {
             
             dx = this.move.velX;
-            settings.controles.touch_de = false;
             //console.log('de');
         }
 
@@ -161,8 +159,7 @@ export class Jugador {
             if (this.disparo.cadencia) {
                 inicializa_disparo(this);
                 this.disparo.cadencia = false;
-                settings.controles.touch_at = false;
-                playSonidosLoop(settings.sonidos.phaser, false, settings.volumen.phaser);
+                playSonidosLoop(settings.sonidos.disparoCorto, false, settings.volumen.disparoCorto);
 
                 setTimeout(() => {
                     this.disparo.cadencia = true;
@@ -182,6 +179,7 @@ export class Jugador {
 
             settings.estado.gameOver = true;
             settings.estado.enJuego = false;
+            playSonidosLoop(settings.sonidos.gameOver, false, settings.volumen.gameOver);
             return;
         }
 

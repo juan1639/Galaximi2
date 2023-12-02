@@ -19,8 +19,8 @@ export class Enemigo {
 
         this.id = this.elegir_enemigo(Enemigo.nro_tiposEnemigo);
 
-        const anchoEsc = settings.constante.bsx * 1.5;
-        const altoEsc = Math.floor(settings.constante.bsy * 1.3);
+        const anchoEsc = settings.constante.bsx;
+        const altoEsc = Math.floor(settings.constante.bsy);
 
         this.corr_suma = 1;
         this.corr_resta = 1;
@@ -28,15 +28,17 @@ export class Enemigo {
         let xIni;
 
         if (args[0] < 0) {
-            xIni = args[0] - detras * anchoEsc;
+            xIni = args[0] - detras * (anchoEsc * 2);
 
         } else {
-            xIni = args[0] + detras * anchoEsc;
+            xIni = args[0] + detras * (anchoEsc * 2);
         }
+
+        const salen_masAbajo = settings.constante.bsy * 4;
 
         this.rect = {
             x: xIni,
-            y: args[1],
+            y: args[1] + salen_masAbajo,
             // ancho: settings.constante.bsx * 2,
             // alto: Math.floor(settings.constante.bsy * 1.7),
             ancho: anchoEsc,
@@ -53,8 +55,8 @@ export class Enemigo {
         this.direccion = {
             derecha: [false, velX, 0],
             izquierda: [false, -velX, 0],
-            arriba: [false, 0, -1],
-            abajo: [false, 0, 1]
+            arriba: [false, 0, -2],
+            abajo: [false, 0, 2]
         };
 
         if (args[0] < 0) {

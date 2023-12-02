@@ -17,7 +17,6 @@ export class Settings {
             pausaNivelSuperado: 3400,
             pausaMsgNivelMostrar: 5200,
             duracion_sonido_intro_galaxian: 6500,
-            nro_botonesControl: 3,
             ssheet: './img/ssheet_galaxian.png'
         };
 
@@ -44,7 +43,6 @@ export class Settings {
             exploparticulas: [],
             texto: [],
             showvidas: [],
-            botones: [],
             banderita: [],
             banderita10: []
         };
@@ -53,7 +51,7 @@ export class Settings {
             scroll: [0, 0, './img/fondoEspacial_galaximi.png'],
             jugador: [
                 Math.floor((this.canvas.width / 2) / this.escala.x) - Math.floor(this.constante.bsx / 2),
-                Math.floor((this.canvas.height - this.constante.bsy * 2 * this.escala.y) / this.escala.y),
+                Math.floor((this.canvas.height - this.constante.bsy * 3 * this.escala.y) / this.escala.y),
                 this.constante.ssheet
             ],
             enemigo: [-50, 0, this.constante.ssheet],
@@ -87,9 +85,9 @@ export class Settings {
             tecla_at: ['Control', ' '],
             tecla_enter: ['Enter', 'Enter'],
 
-            touch_iz: ['canvas', 'canvas'],
-            touch_de: ['canvas', 'canvas'],
-            touch_at: ['canvas', 'canvas'],
+            touch_iz: ['boton__le', 'flecha__le'],
+            touch_de: ['boton__ri', 'flecha__ri'],
+            touch_at: ['boton__at', 'boton__at'],
             touch_canvas: ['canvas', 'canvas']
         };
 
@@ -135,7 +133,7 @@ export class Settings {
         };
 
         this.volumen = {
-            gameOver: 0.8,
+            gameOver: 0.7,
             dieThrow1: 0.9,
             dieThrow2: 0.9,
             chips1: 0.9,
@@ -146,10 +144,10 @@ export class Settings {
             explosion: 0.9,
             naveExplota: 0.9,
             phaser: 0.9,
-            disparoCorto: 0.9,
+            disparoCorto: 1.0,
             retroGameIntro: 0.9,
             introGalaxian: 0.9,
-            levelPassed: 0.8
+            levelPassed: 0.4
         }
     }
 }

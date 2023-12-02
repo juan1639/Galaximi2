@@ -22,11 +22,91 @@ body {
 	width: fit-content;
 	height: inherit;
 	background-color: inherit;
-	/* display: block; */
+	display: block;
 }
 
 #canvas {
 	border: 2px solid black;
+}
+
+.contenedor__botones {
+	width: 99%;
+	height: fit-content;
+	max-height: 4%;
+	max-width: 99%;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px --var(--scores-textShadow);
+	color: var(--color-puntos);
+	background: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.boton {
+	width: fit-content;
+	height: fit-content;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: center;
+	cursor: pointer;
+	padding: 4px 20px 6px 20px;
+	outline: none;
+}
+
+.boton:active {
+	transform: translate(-2px, -4px);
+}
+
+.controles {
+	color: black;
+	border-radius: 6px;
+	background: linear-gradient(#CCC, #777);
+	font-size: 14px;
+	font-weight: bold;
+	box-shadow: inset -3px -2px 2px rgba(0, 0, 0, 0.7);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: none;
+}
+
+#boton__at {
+	width: 69%;
+}
+
+#boton__le, #boton__ri {
+	width: 15%;
+	border-radius: 0 5% 5% 0;
+}
+
+.flecha__direccion {
+	box-sizing: content-box;
+	width: 1px;
+	height: 1px;
+	border: 10px solid;
+}
+
+.arriba {
+	border-color: transparent transparent black transparent;
+	margin: 0 0 7% 0;
+}
+
+.izquierda {
+	border-color: transparent black transparent transparent;
+}
+
+.derecha {
+	border-color: transparent transparent transparent black;
+}
+
+.abajo {
+	border-color: black transparent transparent transparent;
+	margin: 7% 0 0 0;
 }
 
 /*---------------------------------------------------------
@@ -34,44 +114,51 @@ RESPONSIVE
 ---------------------------------------------------------*/
 @media (max-width: 799px) {
 	#canvas {
-		width: 99%;
-		height: 99%;
+		max-width: 99%;
+		max-height: 90%;
 	}
 
 	.contenedor__main {
 		width: 99vw;
+		width: fit-content;
 	}
 }
 
 @media (max-width: 699px) {
 	#canvas {
-		width: 99%;
-		height: 99%;
+		max-width: 99%;
+		max-height: 90%;
 	}
 
 	.contenedor__main {
 		width: 99vw;
+		width: fit-content;
+
 	}
 }
 
 @media (max-width: 424px) {
 	#canvas {
-		width: 99%;
-		height: 99%;
+		max-width: 99%;
+		max-height: 90%;
 	}
 
 	.contenedor__main {
 		width: 99vw;
+		width: fit-content;
+
 	}
 }
 
 @media (max-width: 374px) {
 	#canvas {
-		width: 99%;
-		height: 99%;
+		max-width: 99%;
+		max-height: 90%;
 	}
 
 	.contenedor__main {
 		width: 99vw;
+		width: fit-content;
+
 	}
 }

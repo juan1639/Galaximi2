@@ -41,9 +41,13 @@ function reset_formacion() {
         settings.objeto.enemigo = [];
 
         // playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
-        playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
+        playSonidosLoop(settings.sonidos.levelPassed, false, settings.volumen.levelPassed);
 
-        const nuevo_nro_enemigos = settings.constante.nro_enemigos_inicial + settings.marcadores.nivel;
+        setTimeout(() => {
+            playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
+        }, 1800);
+
+        const nuevo_nro_enemigos = settings.constante.nro_enemigos_inicial + settings.marcadores.nivel * 4;
         let xIni = -50;
 
         if (Math.floor(Math.random()* 99) < 50) xIni = Math.floor(settings.canvas.width / settings.escala.x);

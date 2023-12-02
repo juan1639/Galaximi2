@@ -9,7 +9,6 @@ import { Disparo } from './disparo.js';
 import { Enemigo } from './enemigo.js';
 import { Textos } from './textos.js';
 import { Vidas } from './vidas.js';
-import { Botones } from './botones.js';
 
 // ----------------------------------------------------------------------------
 import {
@@ -28,8 +27,8 @@ import {
 } from "./controles.js";
 
 // ----------------------------------------------------------------------------
-const escalas_validas = [1, 2, 3, 4, 5, 6];
-let escalaSel = 2;
+const escalas_validas = [1, 2, 3, 4];
+let escalaSel = 1;
 let settings;
 let dxdy = [0, 0];
 
@@ -68,10 +67,6 @@ function comenzar_instancias() {
 
     for (let i = 0; i < settings.marcadores.vidas; i ++) {
         settings.objeto.showvidas.push(new Vidas(settings.argumentos.showvidas, i));
-    }
-
-    for (let i = 0; i < settings.constante.nro_botonesControl; i ++) {
-        settings.objeto.botones.push(new Botones(i));
     }
 
     // ---------------------------------------------------------------
