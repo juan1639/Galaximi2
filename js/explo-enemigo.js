@@ -9,8 +9,8 @@ export class ExploEnemigo {
         this.img = new Image();
         this.img.src = args[2];
 
-        const anchoEsc = settings.constante.bsx * 1.5;
-        const altoEsc = Math.floor(settings.constante.bsy * 1.3);
+        const anchoEsc = settings.constante.bsx;
+        const altoEsc = Math.floor(settings.constante.bsy);
 
         this.corr_resta = 1;
 

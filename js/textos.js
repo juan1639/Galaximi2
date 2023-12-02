@@ -80,8 +80,8 @@ export class Textos {
 
         if (this.size === 18) return this.color;
         if (this.size === 22 && settings.estado.playerStart) return this.color;
-        if (this.size === 20 && settings.estado.preJuego) return this.color;
-        if (this.idTxt.slice(0, 5) === 'Galax' && settings.estado.preJuego) return this.color;
+        if (this.size === 20 && (settings.estado.preJuego || settings.estado.reJugar)) return this.color;
+        if (this.idTxt.slice(0, 5) === 'Galax' && (settings.estado.preJuego || settings.estado.reJugar)) return this.color;
         if (this.idTxt.slice(0, 5) === 'Enhor' && settings.estado.nivelSuperado && settings.marcadores.nivel % 11 === 0) return this.color;
         if (this.idTxt.slice(0, 4) === 'Game' && settings.estado.gameOver) return this.color;
 

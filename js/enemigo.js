@@ -1,4 +1,5 @@
 import { settings } from "./main.js";
+import { AtaqueEnemigo } from "./ataque-enemigo.js";
 
 // ============================================================================
 export class Enemigo {
@@ -18,6 +19,7 @@ export class Enemigo {
         this.img.src = args[2];
 
         this.id = this.elegir_enemigo(Enemigo.nro_tiposEnemigo);
+        this.detras = detras;
 
         const anchoEsc = settings.constante.bsx;
         const altoEsc = Math.floor(settings.constante.bsy);
@@ -66,6 +68,7 @@ export class Enemigo {
         }
 
         this.activo = true;
+        this.atacando = false;
 
         this.recorrido_haciaAbajo = 0;
 
@@ -93,6 +96,7 @@ export class Enemigo {
 
         if (!settings.estado.enJuego || settings.estado.nivelSuperado || !this.activo || this.pausa_newGame) return;
 
+        this.check_decidir_atacar();
         this.actualiza();
 
         const anima = (this.rect.clipX * (this.anima + 1)) + this.anima * (this.rect.clipAncho + 1);
@@ -200,5 +204,31 @@ export class Enemigo {
         for (let direccion of keysDirecciones) {
             this.direccion[direccion][0] = false;
         }
+    }
+
+    check_decidir_atacar() {
+
+        if (this.atacando) return;
+
+        // ------------------------------------------------------------
+        const decidir = Math.floor(Math.random()* 99);
+
+        if (decidir < settings.marcadores.nivel && this.check_horizontal_vsJugador()) {
+
+            this.atacando = true;
+            const args = [this.rect.x, this.rect.y + this.rect.alto, './img/disparo_enemigo.png', this.detras];
+
+            settings.objeto.ataqueenemigo.push(new AtaqueEnemigo(args));
+        }
+    }
+
+    check_horizontal_vsJugador() {
+
+        const x = settings.objeto.jugador.rect.x;
+        const ancho = settings.objeto.jugador.rect.ancho;
+
+        if (this.rect.x <= x + ancho && this.rect.x + this.rect.ancho >= x) return true;
+
+        return false;
     }
 }

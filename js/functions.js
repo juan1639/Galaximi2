@@ -2,6 +2,7 @@ import { settings } from "./main.js";
 import { Disparo } from './disparo.js';
 import { Enemigo } from "./enemigo.js";
 import { Banderita, Banderita10 } from "./banderita.js";
+import { Vidas } from "./vidas.js";
 
 // ============================================================================
 //  Funciones varias
@@ -39,6 +40,7 @@ function reset_formacion() {
         Enemigo.resetFormacion = false;
         settings.marcadores.nivel ++;
         settings.objeto.enemigo = [];
+        settings.objeto.ataqueenemigo = [];
 
         // playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
         playSonidosLoop(settings.sonidos.levelPassed, false, settings.volumen.levelPassed);
@@ -108,9 +110,47 @@ function agrega_banderitas(nivel) {
 }
 
 // ============================================================================
+function check_vidaExtra() {
+
+    for (let listaExtra of settings.lista_extras) {
+
+        if (settings.marcadores.puntos >= listaExtra[0] && !listaExtra[1]) {
+            listaExtra[1] = true;
+            settings.marcadores.vidas ++;
+            playSonidosLoop(settings.sonidos.eatingGhost, false, settings.volumen.eatingGhost);
+
+            reset_showVidas();
+        }
+    }
+}
+
+// ============================================================================
+function reset_showVidas() {
+
+    settings.objeto.showvidas = [];
+
+    for (let i = 0; i < settings.marcadores.vidas; i ++) {
+        settings.objeto.showvidas.push(new Vidas(settings.argumentos.showvidas, i));
+    }
+}
+
+// ============================================================================
 function comenzar_partida() {
 
+    if (settings.marcadores.puntos > 0) {
+
+        settings.marcadores.puntos = 0;
+        settings.marcadores.nivel = 0;
+        settings.marcadores.vidas = 3;
+
+        Enemigo.resetFormacion = true;
+        reset_showVidas();
+        settings.objeto.banderita = [];
+        settings.objeto.banderita10 = [];
+    }
+
     settings.estado.preJuego = false;
+    settings.estado.reJugar = false;
     settings.estado.enJuego = true;
     settings.estado.playerStart = true;
 
@@ -150,6 +190,8 @@ function playSonidosLoop(sonido, loop, volumen) {
 export {
     checkColision,
     inicializa_disparo,
+    check_vidaExtra,
+    reset_showVidas,
     reset_formacion,
     check_gameOver,
     comenzar_partida,

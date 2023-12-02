@@ -32,13 +32,23 @@ export class Settings {
             hi: 3000
         };
 
+        this.lista_extras = [
+            [5000, false],
+            [10000, false],
+            [50000, false],
+            [100000, false],
+            [500000, false],
+        ];
+
         this.objeto = {
             scroll: null,
             jugador: null,
+            naveexplota: null,
             enemigo: [],
             disparoEnemigo: [],
             disparo: [],
             explosion: null,
+            ataqueenemigo: [],
             exploenemigo: [],
             exploparticulas: [],
             texto: [],

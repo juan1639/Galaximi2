@@ -1,9 +1,10 @@
 import { settings } from "./main.js";
 import { ExploEnemigo, ExploParticulas } from "./explo-enemigo.js";
+import { NaveExplota } from "./nave-explota.js";
 import { Enemigo } from "./enemigo.js";
-import { Vidas } from "./vidas.js";
 
 import { 
+    reset_showVidas,
     checkColision,
     inicializa_disparo,
     playSonidosLoop
@@ -97,6 +98,7 @@ export class Jugador {
 
         if (!settings.trucos.invisible && !this.revivir.invisible) {
             this.check_colisionEnemigos();
+            this.check_colisionAtaqueEnemigos();
         }
 
         this.rect.x += dx;
@@ -133,6 +135,31 @@ export class Jugador {
 
                 for (let i = 0; i < ExploParticulas.nro_particulas; i ++) {
                     args = [ene.rect.x, ene.rect.y];
+                    settings.objeto.exploenemigo.push(new ExploParticulas(args));
+                }
+            }
+        }
+    }
+
+    check_colisionAtaqueEnemigos() {
+
+        for (let ene of settings.objeto.ataqueenemigo) {
+
+            if (checkColision(ene, this, this.correcciones_enemigos, 0)) {
+
+                settings.estado.jugadorDies = true;
+
+                setTimeout(() => {
+                    this.revivir_jugador();
+                }, this.revivir.duracion_dies);
+
+                playSonidosLoop(settings.sonidos.naveExplota, false, settings.volumen.naveExplota);
+
+                let args = [this.rect.x, this.rect.y, './img/ssheet_galaxian.png'];
+                settings.objeto.naveexplota = new NaveExplota(args);
+
+                for (let i = 0; i < ExploParticulas.nro_particulas; i ++) {
+                    args = [this.rect.x, this.rect.y];
                     settings.objeto.exploenemigo.push(new ExploParticulas(args));
                 }
             }
@@ -179,18 +206,20 @@ export class Jugador {
 
             settings.estado.gameOver = true;
             settings.estado.enJuego = false;
+
+            setTimeout(() => {
+                settings.estado.gameOver = false;
+                settings.estado.reJugar = true;
+            }, 6100);
+
             playSonidosLoop(settings.sonidos.gameOver, false, settings.volumen.gameOver);
             return;
         }
 
         console.log(settings.marcadores.vidas);
 
-        settings.objeto.showvidas = [];
-
-        for (let i = 0; i < settings.marcadores.vidas; i ++) {
-            settings.objeto.showvidas.push(new Vidas(settings.argumentos.showvidas, i));
-        }
-
+        reset_showVidas();
+        
         Enemigo.resetFormacion = true;
         this.revivir.invisible = true;
 

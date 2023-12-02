@@ -12,6 +12,7 @@ import { Vidas } from './vidas.js';
 
 // ----------------------------------------------------------------------------
 import {
+    check_vidaExtra,
     reset_formacion,
     borraCanvas,
     check_gameOver,
@@ -84,8 +85,8 @@ function bucle_principal() {
 
     for (let objeto of keyObjs) {
 
-        if (objeto === 'jugador' || objeto === 'scroll') {
-            settings.objeto[objeto].dibuja();
+        if (objeto === 'jugador' || objeto === 'scroll' || objeto === 'naveexplota') {
+            if (settings.objeto[objeto]) settings.objeto[objeto].dibuja();
 
         } else if (objeto === 'explosion') {
             //settings.objeto[objeto].dibuja();
@@ -97,6 +98,7 @@ function bucle_principal() {
         }
     }
 
+    check_vidaExtra();
     reset_formacion();
     check_gameOver();
 }
