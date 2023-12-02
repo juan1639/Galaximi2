@@ -80,7 +80,7 @@ export class Disparo {
 
                 for (let i = 0; i < ExploParticulas.nro_particulas; i ++) {
                     args = [ene.rect.x, ene.rect.y];
-                    settings.objeto.exploenemigo.push(new ExploParticulas(args));
+                    settings.objeto.exploparticulas.push(new ExploParticulas(args));
                 }
                 
             }

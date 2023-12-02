@@ -41,6 +41,8 @@ function reset_formacion() {
         settings.marcadores.nivel ++;
         settings.objeto.enemigo = [];
         settings.objeto.ataqueenemigo = [];
+        settings.objeto.exploenemigo = [];
+        settings.objeto.exploparticulas = [];
 
         // playSonidosLoop(settings.sonidos.retroGameIntro, false, settings.volumen.retroGameIntro);
         playSonidosLoop(settings.sonidos.levelPassed, false, settings.volumen.levelPassed);
@@ -147,6 +149,9 @@ function comenzar_partida() {
         reset_showVidas();
         settings.objeto.banderita = [];
         settings.objeto.banderita10 = [];
+
+        console.log(settings.objeto.exploenemigo.length);
+        console.log(settings.objeto.exploparticulas.length);
     }
 
     settings.estado.preJuego = false;
