@@ -92,18 +92,13 @@ function bucle_principal() {
         if (objeto === 'jugador' || objeto === 'scroll') {
             settings.objeto[objeto].dibuja();
 
-        } else if (objeto === 'enemigo' || objeto === 'disparo' || objeto === 'exploenemigo' || objeto === 'exploparticulas' || objeto === 'texto' || objeto === 'showvidas' || objeto === 'botones') {
-            for (let noArg of settings.objeto[objeto]) {
-                noArg.dibuja();
-            }
-        
-        } else if (objeto === 'llave') {
+        } else if (objeto === 'explosion') {
             //settings.objeto[objeto].dibuja();
 
         } else {
-            /* for (let arg of settings.objeto[objeto]) {
+            for (let arg of settings.objeto[objeto]) {
                 arg.dibuja();
-            } */
+            }
         }
     }
 

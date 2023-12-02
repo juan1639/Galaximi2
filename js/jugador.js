@@ -146,12 +146,14 @@ export class Jugador {
         if (settings.controles.tecla_iz || settings.controles.touch_iz) {
             
             dx = -(this.move.velX);
-            console.log('iz');
-
+            settings.controles.touch_iz = false;
+            //console.log('iz');
+            
         } else if (settings.controles.tecla_de || settings.controles.touch_de) {
             
             dx = this.move.velX;
-            console.log('de');
+            settings.controles.touch_de = false;
+            //console.log('de');
         }
 
         if (settings.controles.tecla_at || settings.controles.touch_at) {
@@ -159,6 +161,7 @@ export class Jugador {
             if (this.disparo.cadencia) {
                 inicializa_disparo(this);
                 this.disparo.cadencia = false;
+                settings.controles.touch_at = false;
                 playSonidosLoop(settings.sonidos.phaser, false, settings.volumen.phaser);
 
                 setTimeout(() => {

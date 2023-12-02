@@ -1,6 +1,7 @@
 import { settings } from "./main.js";
 import { Disparo } from './disparo.js';
 import { Enemigo } from "./enemigo.js";
+import { Banderita, Banderita10 } from "./banderita.js";
 
 // ============================================================================
 //  Funciones varias
@@ -55,11 +56,50 @@ function reset_formacion() {
 
         console.log(settings.objeto.enemigo.length);
 
+        agrega_banderitas(settings.marcadores.nivel);
+
         settings.estado.nivelSuperado = true;
 
         setTimeout(() => {
             settings.estado.nivelSuperado = false;
         }, settings.constante.pausaNivelSuperado);
+    }
+}
+
+// ============================================================================
+function agrega_banderitas(nivel) {
+
+    if (nivel < 2) return;
+
+    settings.objeto.banderita = [];
+    let banderas = nivel - 1;
+    console.log('banderas:', banderas, nivel);
+
+    if (banderas < 10) {
+
+        for (let i = 0; i < banderas; i ++) {
+            settings.objeto.banderita.push(new Banderita(settings.argumentos.banderita, i));
+        }
+
+    } else {
+
+        const entre10 = banderas / 10;
+        const entre10Int = Math.floor(entre10);
+        const banderitas10 = entre10.toString().slice(-1);
+        console.log('entre10:', banderitas10, entre10.toString().length);
+
+        if (entre10.toString().length === 1) {
+
+            for (let i = 0; i < entre10Int; i ++) {
+                settings.objeto.banderita10.push(new Banderita10(settings.argumentos.banderita, i));
+            }
+
+        } else {
+
+            for (let i = 0; i < banderitas10; i ++) {
+                settings.objeto.banderita.push(new Banderita(settings.argumentos.banderita, i));
+            }
+        }
     }
 }
 

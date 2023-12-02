@@ -44,7 +44,9 @@ export class Settings {
             exploparticulas: [],
             texto: [],
             showvidas: [],
-            botones: []
+            botones: [],
+            banderita: [],
+            banderita10: []
         };
 
         this.argumentos = {
@@ -61,7 +63,8 @@ export class Settings {
             exploenemigo: [],
             exploparticulas: [],
             texto: [],
-            showvidas: [this.marcadores.vidas, this.constante.ssheet]
+            showvidas: [this.marcadores.vidas, this.constante.ssheet],
+            banderita: [this.marcadores.nivel, this.constante.ssheet]
         };
 
         this.enemigosDificultad = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
@@ -84,9 +87,9 @@ export class Settings {
             tecla_at: ['Control', ' '],
             tecla_enter: ['Enter', 'Enter'],
 
-            touch_iz: ['boton__le', 'flecha__le'],
-            touch_de: ['boton__ri', 'flecha__ri'],
-            touch_at: ['boton__at', 'icono__at'],
+            touch_iz: ['canvas', 'canvas'],
+            touch_de: ['canvas', 'canvas'],
+            touch_at: ['canvas', 'canvas'],
             touch_canvas: ['canvas', 'canvas']
         };
 

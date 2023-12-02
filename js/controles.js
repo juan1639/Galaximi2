@@ -75,9 +75,15 @@ const eventos_keyUp = document.addEventListener('keyup', (event) => {
 // ----------------------------------------------------------------------
 const eventos_touchStart = document.addEventListener('touchstart', (event) => {
 
-    //console.log(event.target.id, event.targetTouches, event);
     const keysTeclas = Object.keys(settings.tecla);
     const touch = event.target.id;
+    const coordX = event.targetTouches[0].clientX;
+    const coordY = event.targetTouches[0].clientY;
+    console.log(event.targetTouches[0].clientX, event.targetTouches[0].clientY);
+
+    // boton iz -->  0-85,   285-
+    // boton de -->  90-180, 285-
+    // boton fire -> 220- 
 
     if (settings.estado.reJugar) {
 
@@ -95,10 +101,16 @@ const eventos_touchStart = document.addEventListener('touchstart', (event) => {
 
     if (settings.estado.enJuego) {
 
-        for (let idTecla of keysTeclas) {
+        if (coordY > 285) {
 
-            if (touch === settings.tecla[idTecla][0] || touch === settings.tecla[idTecla][1]) {
-                settings.controles[idTecla] = true;
+            if (coordX < 85) {
+                settings.controles.touch_iz = true;
+                
+            } else if (coordX > 90 && coordX < 180) {
+                settings.controles.touch_de = true;
+                
+            } else if (coordX > 220) {
+                settings.controles.touch_at = true;
             }
         }
     }
@@ -113,15 +125,27 @@ const eventos_touchEnd = document.addEventListener('touchend', (event) => {
     //console.log(event.target.id, event.targetTouches);
     const keysTeclas = Object.keys(settings.tecla);
     const touchEnd = event.target.id;
+    /* const coordX = event.targetTouches[0].clientX;
+    const coordY = event.targetTouches[0].clientY; */
 
     if (settings.estado.enJuego) {
 
-        for (let idTecla of keysTeclas) {
+        /* if (coordY > 285) {
 
-            if (touchEnd === settings.tecla[idTecla][0] || touchEnd === settings.tecla[idTecla][1]) {
-                settings.controles[idTecla] = false;
+            if (coordX < 85) {
+                settings.controles.touch_iz = false;
+                
+            } else if (coordX > 90 && coordX < 180) {
+                settings.controles.touch_de = false;
+                
+            } else if (coordX > 220) {
+                settings.controles.touch_at = false;
             }
-        }
+        } */
+
+        /* if (touchEnd === settings.tecla[idTecla][0] || touchEnd === settings.tecla[idTecla][1]) {
+            settings.controles[idTecla] = false;
+        } */
     }
 });
 
