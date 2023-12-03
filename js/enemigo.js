@@ -213,7 +213,7 @@ export class Enemigo {
         if (this.atacando) return;
 
         // ------------------------------------------------------------
-        const decidir = Math.floor(Math.random()* 99);
+        const decidir = Math.floor(Math.random()* 799);
 
         if (decidir < settings.marcadores.nivel && this.check_horizontal_vsJugador()) {
 

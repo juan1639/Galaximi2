@@ -22,8 +22,8 @@ export class Settings {
 
         this.canvas = document.getElementById('canvas');
         this.ctx = canvas.getContext('2d');
-        this.canvas.width = 320;
-        this.canvas.height = 320;
+        this.canvas.width = 640;
+        this.canvas.height = 480;
 
         this.marcadores = {
             puntos: 0,

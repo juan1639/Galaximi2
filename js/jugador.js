@@ -36,9 +36,15 @@ export class Jugador {
             clipAlto: 16
         }
 
+        this.vel_inicial = 3;
+
         this.move = {
-            velX: 6,
+            acelX: 0.3,
+            acelY: 0,
+            velX: this.vel_inicial,
             velY: 0,
+            max_velX: 9,
+            max_velY: 0
         }
 
         this.revivir = {
@@ -171,14 +177,20 @@ export class Jugador {
         let dx = 0;
 
         if (settings.controles.tecla_iz || settings.controles.touch_iz) {
-            
+
+            if (this.move.velX < this.move.max_velX) this.move.velX += this.move.acelX;
             dx = -(this.move.velX);
             //console.log('iz');
             
         } else if (settings.controles.tecla_de || settings.controles.touch_de) {
-            
+
+            if (this.move.velX < this.move.max_velX) this.move.velX += this.move.acelX;
             dx = this.move.velX;
             //console.log('de');
+
+        } else {
+            this.move.velX = this.vel_inicial;
+            dx = 0;
         }
 
         if (settings.controles.tecla_at || settings.controles.touch_at) {

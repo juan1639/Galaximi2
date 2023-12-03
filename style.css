@@ -53,7 +53,7 @@ body {
 	font-weight: 700;
 	text-align: center;
 	cursor: pointer;
-	padding: 6px 20px 7px 20px;
+	padding: 9px 20px 14px 20px;
 	outline: none;
 }
 
@@ -65,6 +65,7 @@ body {
 	color: black;
 	border-radius: 6px;
 	background: linear-gradient(#CCC, #777);
+	opacity: 0.5;
 	font-size: 18px;
 	font-weight: bold;
 	box-shadow: inset -3px -2px 2px rgba(0, 0, 0, 0.7);
@@ -76,11 +77,11 @@ body {
 }
 
 #boton__at {
-	width: 51%;
+	width: 39%;
 }
 
 #boton__le, #boton__ri {
-	width: 24%;
+	width: 30%;
 	border-radius: 0 5% 5% 0;
 }
 
@@ -115,6 +116,18 @@ RESPONSIVE
 @media (max-width: 799px) {
 	#canvas {
 		max-width: 99%;
+		max-height: 90%;
+	}
+
+	.contenedor__main {
+		width: 99vw;
+		width: fit-content;
+	}
+}
+
+@media (min-width: 450px) {
+	#canvas {
+		min-width: 99%;
 		max-height: 90%;
 	}
 

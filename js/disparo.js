@@ -14,7 +14,7 @@ export class Disparo {
             x: args[0],
             y: args[1],
             ancho: 1,
-            alto: Math.floor(settings.constante.bsy / settings.escala.y)
+            alto: Math.floor(settings.constante.bsy)
         }
 
         this.move = {
@@ -46,7 +46,7 @@ export class Disparo {
         this.ctx.save();
 
         this.ctx.shadowColor = 'white';
-        this.ctx.shadowBlur = 5;
+        this.ctx.shadowBlur = 12;
 
         this.ctx.fillStyle = 'lightyellow';
         this.ctx.fillRect(this.rect.x, this.rect.y, this.rect.ancho, this.rect.alto);

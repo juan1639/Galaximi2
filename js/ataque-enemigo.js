@@ -11,7 +11,7 @@ export class AtaqueEnemigo {
 
         this.detras = args[3];
 
-        const anchoEsc = Math.floor(settings.constante.bsx / 2);
+        const anchoEsc = Math.floor(settings.constante.bsx / 3);
         const altoEsc = Math.floor(settings.constante.bsy);
 
         this.corr_resta = 1;
@@ -29,7 +29,7 @@ export class AtaqueEnemigo {
 
         this.move = {
             x: 0,
-            y: Math.floor(4 / settings.escala.y)
+            y: Math.floor(5 / settings.escala.y)
         }
 
         this.animacion = {
