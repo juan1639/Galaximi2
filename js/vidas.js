@@ -14,8 +14,8 @@ export class Vidas {
         this.img = new Image();
         this.img.src = args[1];
 
-        const anchoEsc = Math.floor(settings.constante.bsx);
-        const altoEsc = Math.floor(settings.constante.bsy);
+        const anchoEsc = Math.floor(settings.constante.bsx / 1.5);
+        const altoEsc = Math.floor(settings.constante.bsy / 1.5);
 
         this.rect = {
             x: Math.floor((settings.canvas.width / settings.escala.x) / 1.3) + anchoEsc * this.indice,

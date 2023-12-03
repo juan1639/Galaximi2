@@ -29,7 +29,7 @@ import {
 
 // ----------------------------------------------------------------------------
 const escalas_validas = [1, 2, 3, 4];
-let escalaSel = 1;
+let escalaSel = 2;
 let settings;
 let dxdy = [0, 0];
 

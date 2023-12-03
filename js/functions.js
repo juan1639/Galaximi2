@@ -145,6 +145,11 @@ function comenzar_partida() {
         settings.marcadores.nivel = 0;
         settings.marcadores.vidas = 3;
 
+        settings.objeto.jugador.revivir.invisible = true;
+        setTimeout(() => {
+            settings.objeto.jugador.revivir.invisible = false;
+        }, settings.objeto.jugador.revivir.duracion_invisible);
+
         Enemigo.resetFormacion = true;
         reset_showVidas();
         settings.objeto.banderita = [];

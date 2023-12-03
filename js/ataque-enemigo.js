@@ -29,7 +29,7 @@ export class AtaqueEnemigo {
 
         this.move = {
             x: 0,
-            y: 5
+            y: Math.floor(4 / settings.escala.y)
         }
 
         this.animacion = {

@@ -36,7 +36,7 @@ export class Enemigo {
             xIni = args[0] + detras * (anchoEsc * 2);
         }
 
-        const salen_masAbajo = settings.constante.bsy * 4;
+        const salen_masAbajo = Math.floor((settings.constante.bsy * 4) / settings.escala.y);
 
         this.rect = {
             x: xIni,
@@ -54,11 +54,13 @@ export class Enemigo {
         const velX = this.velocidad_progresiva();
         console.log(velX);
 
+        const velY = 2 / settings.escala.y;
+
         this.direccion = {
             derecha: [false, velX, 0],
             izquierda: [false, -velX, 0],
-            arriba: [false, 0, -2],
-            abajo: [false, 0, 2]
+            arriba: [false, 0, -velY],
+            abajo: [false, 0, velY]
         };
 
         if (args[0] < 0) {

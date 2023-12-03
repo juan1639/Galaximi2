@@ -43,15 +43,16 @@ export class Textos {
         let y = Math.floor(settings.canvas.height / settings.escala.y / 2);
 
         let marcadorTxt = '';
-        
+        const size = Math.floor(this.size / settings.escala.y);
+
         if (this.idTxt.slice(0, 3) === 'Pts') {
             x = 0;
-            y = this.size;
+            y = size;
             marcadorTxt = settings.marcadores.puntos.toString();
 
         } else if (this.idTxt.slice(0, 2) === 'Hi') {
             x = Math.floor(settings.canvas.width / settings.escala.x / 2);
-            y = this.size;
+            y = size;
             marcadorTxt = settings.marcadores.puntos.toString();
 
         } else if (this.idTxt.slice(0, 5) === 'Toque') {
@@ -62,8 +63,8 @@ export class Textos {
         }
 
         this.ctx.save();
-
-        this.ctx.font = this.size.toString() + 'px arial';
+        
+        this.ctx.font = size.toString() + 'px arial';
         this.ctx.textAlign = this.alin;
         this.ctx.fillStyle = 'transparent';
         this.ctx.fillStyle = this.renderizado_condicional();

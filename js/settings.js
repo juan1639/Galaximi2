@@ -59,7 +59,7 @@ export class Settings {
             scroll: [0, 0, './img/fondoEspacial_galaximi.png'],
             jugador: [
                 Math.floor((this.canvas.width / 2) / this.escala.x) - Math.floor(this.constante.bsx / 2),
-                Math.floor((this.canvas.height - this.constante.bsy * 3 * this.escala.y) / this.escala.y),
+                Math.floor((this.canvas.height - this.constante.bsy * 3) / this.escala.y),
                 this.constante.ssheet
             ],
             enemigo: [-50, 0, this.constante.ssheet],

@@ -14,12 +14,12 @@ export class Banderita {
         this.img = new Image();
         this.img.src = args[1];
 
-        const anchoEsc = Math.floor(settings.constante.bsx / 2);
-        const altoEsc = Math.floor(settings.constante.bsy);
+        const anchoEsc = Math.floor((settings.constante.bsx / 2) / settings.escala.x);
+        const altoEsc = Math.floor(settings.constante.bsy / settings.escala.y);
 
         this.rect = {
             x: anchoEsc * this.indice,
-            y: Math.floor(settings.canvas.height - settings.constante.bsy * 2),
+            y: Math.floor((settings.canvas.height / settings.escala.y) - ((settings.constante.bsy * 2) / settings.escala.y)),
             ancho: anchoEsc,
             alto: altoEsc,
             clipX: 35,
@@ -49,12 +49,12 @@ export class Banderita10 {
         this.img = new Image();
         this.img.src = args[1];
 
-        const anchoEsc = Math.floor(settings.constante.bsx);
-        const altoEsc = Math.floor(settings.constante.bsy);
+        const anchoEsc = Math.floor(settings.constante.bsx / settings.escala.x);
+        const altoEsc = Math.floor(settings.constante.bsy / settings.escala.y);
 
         this.rect = {
             x: Math.floor((settings.canvas.width / settings.escala.x) / 1.8) + anchoEsc * this.indice,
-            y: Math.floor(settings.canvas.height - settings.constante.bsy * 2),
+            y: Math.floor(settings.canvas.height - ((settings.constante.bsy * 2) / settings.escala.y)),
             ancho: anchoEsc,
             alto: altoEsc,
             clipX: 44,
